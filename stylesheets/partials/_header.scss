@@ -5,9 +5,73 @@ header {
   padding: $header-height * 0.06;
   box-sizing: border-box;
   background-color: white;
-  img.logo {
-    display: block;
+  > a {
+    display: inline-block;
     height: 100%;
+    width: auto;
+    @include desktop {
+      img.logo {
+        display: block;
+        height: 100%;
+      }
+      img.logo-small {
+        display: none;
+      }
+    }
+    @include mobile {
+      img.logo {
+        display: none;
+      }
+      img.logo-small {
+        display: block;
+        height: 100%;
+      }
+    }
+    @include small-mobile {
+      img.logo {
+        display: none;
+      }
+      img.logo-small {
+        display: block;
+        height: 100%;
+      }
+    }
   }
   box-shadow: 0 $header-height * 0.06 $header-height * 0.06 rgba($cloudinary-greys-300, 0.5);
+
+  position: relative;
+  .menu {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 80%;
+    transform: translateY(-50%);
+    list-style-type: none;
+    text-align: right;
+    margin: 0;
+    > li {
+      display: inline-block;
+      margin-left: 1em;
+      margin-right: 1em;
+      color: $cloudinary-greys-400;
+      &.history, &.logout {
+        cursor: pointer;
+      }
+      @include mobile {
+        &.welcome {
+          display: none;
+        }
+      }
+      @include small-mobile {
+        &.welcome {
+          display: none;
+        }
+      }
+      > a {
+        text-decoration: none;
+        display: inline-block;
+        color: inherit;
+      }
+    }
+  }
 }

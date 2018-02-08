@@ -3,6 +3,11 @@
   width: 100%;
   min-height: 100vh;
   .user-history {
+    h2 {
+      font-size: medium;
+      text-align: center;
+      margin-top: 2em;
+    }
     > ul {
       > li {
         list-style-type: none;

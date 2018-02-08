@@ -25,6 +25,7 @@ class UserPage extends Component {
         return <div className="user-page">
             <Header />
             <div className="user-history">
+                <h2>History of views</h2>
                 <ul>
                     {(()=>{
                         let ret = [];
