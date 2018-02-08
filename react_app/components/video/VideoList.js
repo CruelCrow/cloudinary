@@ -14,6 +14,15 @@ class VideoList extends Component {
 
     constructor(props) {
         super(props);
+
+        this.setPageTitle = this.setPageTitle.bind(this);
+    }
+
+    setPageTitle() {
+        document.title = 'Cloudinary';
+        if (this.props.currentVideo) {
+            document.title = `${this.props.currentVideo.name} - Cloudinary`;
+        }
     }
 
     componentDidMount() {
@@ -23,20 +32,26 @@ class VideoList extends Component {
 
         this.props.callAction(Consts.ACTIONS.CLEAR_VIDEO);
 
-        if (!!this.props.params['vid']) {
+        if (this.props.params['vid']) {
             this.props.callAction(Consts.ACTIONS.GET_VIDEO, atob(this.props.params['vid']), true);
         }
+
+        this.setPageTitle();
     }
 
     componentWillReceiveProps(nextProps) {
         if (this.props.params['vid'] != nextProps.params['vid']) {
             window.scrollTo(0, 0);
-            if (!!nextProps.params['vid']) {
+            if (nextProps.params['vid']) {
                 this.props.callAction(Consts.ACTIONS.GET_VIDEO, atob(nextProps.params['vid']), true);
             } else {
                 this.props.callAction(Consts.ACTIONS.CLEAR_VIDEO);
             }
         }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        this.setPageTitle();
     }
 
     render() {
@@ -46,7 +61,7 @@ class VideoList extends Component {
                     <Link to='/'><img className='logo' src='/images/logo/cloudinary_logo_for_white_bg.svg' alt='Cloudinary logo' /></Link>
                 </header>
 
-                {!!this.props.params['vid'] &&
+                {this.props.params['vid'] &&
                 <PlayVideo video={this.props.currentVideo} isLoading={this.props.isLoadingVideo} error={this.props.errorVideo} />}
 
                 <div className="video-list">
