@@ -1,0 +1,22 @@
+.user-page {
+  background-color: $cloudinary-greys-100;
+  width: 100%;
+  min-height: 100vh;
+  .user-history {
+    > ul {
+      > li {
+        list-style-type: none;
+        max-width: $max-desktop-content-width;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        > time {
+          display: inline-block;
+          width: 40%;
+          margin-right: 2em;
+        }
+      }
+    }
+  }
+}

@@ -18,7 +18,10 @@ const Constants = {
 
         LIST_VIDEOS: Symbol(),
         GET_VIDEO: Symbol(),
-        CLEAR_VIDEO: Symbol()
+        CLEAR_VIDEO: Symbol(),
+
+        ADD_VIDEO_TO_HISTORY: Symbol(),
+        LOG_OUT: Symbol()
     }
 };
 

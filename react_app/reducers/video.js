@@ -1,13 +1,16 @@
 import {Consts} from './../constants';
 import {VideoPreview, Video} from './../models';
 import extend from './../utils/extend';
+import {User} from "../models";
 
 const initialState = {
     errorList: null,
     errorVideo: null,
 
     listOfVideos: [],
-    currentVideo: null
+    currentVideo: null,
+
+    user: User.currentUser
 };
 
 export default function (state = initialState, action) {

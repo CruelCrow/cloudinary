@@ -1,17 +1,18 @@
 import {Consts} from './../constants';
+import {VideoPreview, Video, User} from './../models';
 
-const initialState = new Set();
+const initialState = User.currentUser;
 
 export default function (state = initialState, action) {
     switch (action.type) {
 
-        case Consts.ACTIONS.START_LOADING:
-            state.add(action.payload);
+        case Consts.ACTIONS.ADD_VIDEO_TO_HISTORY:
+            state.addToHistory(action.payload);
             return state;
             break;
 
-        case Consts.ACTIONS.END_LOADING:
-            state.delete(action.payload);
+        case Consts.ACTIONS.LOG_OUT:
+            state.logOut();
             return state;
             break;
 

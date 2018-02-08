@@ -1,5 +1,8 @@
 import {Consts} from './../constants';
 import CloudinaryApi from './../utils/CloudinaryApi';
+import rootStore from './../utils/application_store';
+import actions from "./index";
+import VideoPreview from "../models/VideoPreview";
 
 export default {
     [Consts.ACTIONS.LIST_VIDEOS]: function() {
@@ -12,7 +15,14 @@ export default {
     },
 
     [Consts.ACTIONS.GET_VIDEO]: function(url) {
-        let request = CloudinaryApi.getVideo(url);
+        let videoPreview = new VideoPreview({url: url});
+        let request = CloudinaryApi.getVideo(videoPreview.url);
+        request.then((res)=>{
+            if (res && res.data) {
+                videoPreview.name = res.data.name;
+                rootStore.dispatch(actions[Consts.ACTIONS.ADD_VIDEO_TO_HISTORY](videoPreview));
+            }
+        });
 
         return {
             type: Consts.ACTIONS.GET_VIDEO,

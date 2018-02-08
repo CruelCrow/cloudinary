@@ -13,7 +13,7 @@ class Preview extends Component {
         return (
             <figure className="video-preview">
                 <Link to={`/video/${this.props.videoPreview.videoDataUrlEncoded}`}>
-                    <div className='preview-image' style={{backgroundImage: `url(${this.props.videoPreview.imageUrl})`}}></div>
+                    <div className='preview-image' style={{backgroundImage: `url(${this.props.videoPreview.image})`}}></div>
                     <figcaption>
                         {this.props.videoPreview.name}
                     </figcaption>

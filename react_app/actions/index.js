@@ -1,11 +1,13 @@
 import video from './video';
 import loading from './loading';
+import user from './user';
 import rootStore from './../utils/application_store';
 import {Consts} from "../constants";
 
 let actions = Object.assign({}, //combine actions
     video,
-    loading
+    loading,
+    user
 );
 
 export function callAction(action, payload, loadingNeeded = false) {

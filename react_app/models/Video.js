@@ -1,8 +1,8 @@
 class Video {
-    constructor(vp = {}) {
-        this.name = vp.name || null;
-        this.url = vp.url || null;
-        this.description = vp.description || null;
+    constructor(v = {}) {
+        this.name = v.name || null;
+        this.url = v.url || null;
+        this.description = v.description || null;
     }
 }
 

@@ -8,7 +8,9 @@ import Loading from './../Loading';
 import {Link} from 'react-router';
 import Preview from './Preview';
 import PlayVideo from './PlayVideo';
- import {callAction} from "../../actions";
+import {callAction} from "../../actions";
+import Header from "./Header";
+import VideoPreview from "../../models/VideoPreview";
 
 class VideoList extends Component {
 
@@ -57,19 +59,20 @@ class VideoList extends Component {
     render() {
         return (
             <div className="video-page">
-                <header>
-                    <Link to='/'><img className='logo' src='/images/logo/cloudinary_logo_for_white_bg.svg' alt='Cloudinary logo' /></Link>
-                </header>
+                <Header/>
 
                 {this.props.params['vid'] &&
-                <PlayVideo video={this.props.currentVideo} isLoading={this.props.isLoadingVideo} error={this.props.errorVideo} />}
+                <PlayVideo video={this.props.currentVideo} isLoading={this.props.isLoadingVideo}
+                           error={this.props.errorVideo}/>}
 
                 <div className="video-list">
                     {this.props.errorList && <Error error={this.props.errorList}></Error>}
                     {this.props.isLoadingListOfVideos ? <Loading visible={true}/> :
                         <ul>
                             {this.props.listOfVideos.map((v, i) => {
-                                return <li className={this.props.params['vid'] == v.videoDataUrlEncoded ? 'selected' : ''} key={`Preview${i}`}><Preview videoPreview={v}/></li>
+                                return <li
+                                    className={this.props.params['vid'] == v.videoDataUrlEncoded ? 'selected' : ''}
+                                    key={`Preview${i}`}><Preview videoPreview={v}/></li>
                             })}
                         </ul>
                     }

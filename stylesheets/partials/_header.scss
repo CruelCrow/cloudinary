@@ -1,0 +1,13 @@
+header {
+  display: block;
+  width: 100%;
+  height: $header-height;
+  padding: $header-height * 0.06;
+  box-sizing: border-box;
+  background-color: white;
+  img.logo {
+    display: block;
+    height: 100%;
+  }
+  box-shadow: 0 $header-height * 0.06 $header-height * 0.06 rgba($cloudinary-greys-300, 0.5);
+}
