@@ -1,0 +1,91 @@
+.video-page {
+  background-color: $cloudinary-greys-100;
+  width: 100%;
+  min-height: 100vh;
+  header {
+    display: block;
+    width: 100%;
+    height: $header-height;
+    padding: $header-height * 0.06;
+    box-sizing: border-box;
+    background-color: white;
+    img.logo {
+      display: block;
+      height: 100%;
+    }
+    box-shadow: 0 $header-height * 0.06 $header-height * 0.06 rgba($cloudinary-greys-300, 0.5);
+  }
+
+  .video-list {
+    margin-top: 10vmin;
+    > ul {
+      list-style-type: none;
+      margin: 0;
+      max-width: $video-previews-in-a-row * ($video-preview-margin * 2 + $video-preview-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      > li {
+        padding: 0;
+        display: inline-block;
+        margin: $video-preview-margin;
+        width: $video-preview-width;
+        > figure {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          a {
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+
+          }
+          .preview-image {
+            display: inline-block;
+            width: $video-preview-width;
+            height: $video-preview-height;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            background-position: center center;
+          }
+          figcaption {
+            color: $cloudinary-greys-400;
+            font-weight: bold;
+            text-decoration: none;
+          }
+        }
+        &:hover, &.selected {
+          a:after {
+            animation: fadein-basic 1s;
+            display: block;
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: $video-preview-height / 2;
+            width: 25%;
+            height: 25%;
+            transform: translate(-50%, -50%);
+            background-image: url('/images/play.svg');
+            background-repeat: no-repeat;
+            background-size: 60% auto;
+            background-position: center center;
+          }
+        }
+      }
+    }
+  }
+
+  .video {
+    figcaption {
+      font-size: 150%;
+      font-weight: bold;
+      color: $cloudinary-greys-400;
+    }
+    .description {
+      color: $cloudinary-greys-300;
+    }
+  }
+}
